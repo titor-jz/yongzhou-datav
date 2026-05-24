@@ -1,5 +1,6 @@
 import { useLayoutEffect, useMemo } from "react";
 import { useThree } from "@react-three/fiber";
+import { Center } from "@react-three/drei";
 import { geoMercator } from "d3-geo";
 import { gsap } from "gsap";
 import type { CityGeoJSON } from "@/types/map";
@@ -17,26 +18,29 @@ export default function Index() {
   const projection = useMemo(() => {
     return geoMercator()
       .center(data.features[0].properties.centroid)
-      .scale(15000)
+      .scale(10000)
       .translate([0, 0]);
   }, []);
 
   useLayoutEffect(() => {
     const tween = gsap.fromTo(
       camera.position,
-      { x: 0, y: 30, z: 50 },
-      { x: 0, y: 20, z: 20, duration: 1.5, ease: "sine.inOut" }
+      { x: 0, y: 50, z: 50 },
+      { x: 0, y: 50, z: 50, duration: 0.01 }
     );
 
     return () => {
       tween.kill();
     };
-  }, [camera]);return (
-    <group rotation={[-Math.PI / 2, 0, 0]} scale={2.0}>
-      <BaseMap projection={projection} />
+  }, [camera]);
 
-      <OutLine projection={projection} />
-      <FlyLine projection={projection} />
+  return (
+    <group rotation={[-Math.PI / 2, 0, 0]} scale={2.0}>
+      <Center top>
+        <BaseMap projection={projection} />
+        <OutLine projection={projection} />
+        <FlyLine projection={projection} />
+      </Center>
     </group>
   );
 }

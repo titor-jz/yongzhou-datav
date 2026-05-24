@@ -17,7 +17,7 @@ export default function Index() {
       <Canvas
         flat
         shadows
-        camera={{ position: [-50, 125, 250], fov: 50, far: 2000, near: 1 }}
+        camera={{ position: [0, 120, 120], fov: 50, far: 2000, near: 1 }}
         dpr={[1, 2]}>
         <color attach="background" args={["#fff5e8"]} />
         <Lights />

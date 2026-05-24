@@ -1,5 +1,4 @@
 import { useLayoutEffect, useMemo, useRef } from "react";
-import { useTexture } from "@react-three/drei";
 import {
   Box2,
   DoubleSide,
@@ -23,8 +22,6 @@ import FlyLine from "./flyLine";
 import Boundary from "./boundary";
 import Label from "./label";
 import { useConfigStore } from "../stores";
-
-import yzNormalMap from "@/assets/sc_normal_map1.png";
 import Cones from "./cone";
 
 export interface BaseProps {
@@ -106,11 +103,10 @@ export default function Base(props: BaseProps) {
     const tl = gsap.timeline();
 
     tl.to(camera.position, {
-      x: -2,
-      y: 7,
-      z: 10,
+      x: 0,
+      y: 40,
+      z: 40,
       duration: 2.5,
-      // delay: 2,
       ease: "circ.out",
       onComplete: () => {
         useConfigStore.setState({ mapPlayComplete: true });
@@ -184,8 +180,6 @@ function City(props: {
   const groupRef = useRef<Group>(null!);
   const vector3 = useRef(new Vector3(1, 1, 1));
 
-  const texture = useTexture(yzNormalMap);
-
   const [shape, shapeGeometry] = useMemo(() => {
     const shapes = data.points.map((e) => new Shape(e));
     const shapeGeometry = new ShapeGeometry(shapes);
@@ -224,7 +218,6 @@ function City(props: {
           transparent
           attach="material-0"
           color="#293b41"
-          normalMap={texture}
           metalness={0.5}
           roughness={0.7}
           side={DoubleSide}

@@ -1,34 +1,17 @@
 import { Fragment, useMemo } from "react";
-import { Billboard, Line, Text, useTexture } from "@react-three/drei";
-import {
-  Box2,
-  DoubleSide,
-  RepeatWrapping,
-  Shape,
-  Vector2,
-  Vector3,
-} from "three";
+import { Billboard, Line, Text } from "@react-three/drei";
+import { Box2, DoubleSide, Shape, Vector2, Vector3 } from "three";
 import { useMapStyleStore } from "../stores";
 import ShapeBox from "./shape";
 import type { GeoProjection } from "d3-geo";
 import type { CityGeoJSON } from "@/types/map";
 
 import yongzhouMapData from "@/assets/yongzhou.json";
-import yzMapTexture from "@/assets/sc_map.png";
-import yzNormalMap from "@/assets/sc_normal_map.png";
-import yzDisplacementMap from "@/assets/sc_displacement_map.png";
 
 const data = yongzhouMapData as CityGeoJSON;
 
 export default function BaseMap({ projection }: { projection: GeoProjection }) {
   const newStyle = useMapStyleStore((s) => s.newStyle);
-  const [texture1, texture2, texture3] = useTexture(
-    [yzMapTexture, yzNormalMap, yzDisplacementMap],
-    (tex) =>
-      tex.forEach((el) => {
-        el.wrapS = el.wrapT = RepeatWrapping;
-      })
-  );
 
   const { regions, bbox } = useMemo(() => {
     const regions: {
@@ -77,9 +60,7 @@ export default function BaseMap({ projection }: { projection: GeoProjection }) {
         <Fragment key={`new` + i}>
           <ShapeBox bbox={bbox} args={[reg.points.map((e) => new Shape(e))]}>
             <meshStandardMaterial
-              map={texture1}
-              normalMap={texture2}
-              displacementMap={texture3}
+              color="#3b7dd8"
               metalness={0.2}
               roughness={0.5}
               side={DoubleSide}
@@ -102,8 +83,7 @@ export default function BaseMap({ projection }: { projection: GeoProjection }) {
         <Fragment key={i}>
           <ShapeBox bbox={bbox} args={[reg.points.map((e) => new Shape(e))]}>
             <meshStandardMaterial
-              map={texture1}
-              normalMap={texture2}
+              color="#3b7dd8"
               metalness={0.2}
               roughness={0.5}
               side={DoubleSide}

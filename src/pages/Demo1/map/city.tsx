@@ -17,8 +17,7 @@ import Label from "./label";
 
 import cityData from "../cityData";
 
-export interface CityProps
-  extends Pick<MeshStandardMaterialProperties, "map" | "normalMap"> {
+export interface CityProps {
   bbox: Box2;
   depth: number;
   data: {
@@ -29,7 +28,7 @@ export interface CityProps
 }
 
 export default function City(props: CityProps) {
-  const { data, bbox, depth, map, normalMap } = props;
+  const { data, bbox, depth } = props;
   const groupRef = useRef<Group>(null!);
   const tooltipRef = useRef<{ open: () => void; close: () => void }>(null!);
   const vector3 = useRef(new Vector3(1, 1, 1));
@@ -59,7 +58,7 @@ export default function City(props: CityProps) {
         document.body.style.cursor = "auto";
       }}>
       <ShapeMesh position-z={depth + 0.1} bbox={bbox} args={[shape]}>
-        <meshStandardMaterial map={map} normalMap={normalMap} />
+        <meshStandardMaterial map={map} normalMap={normalMap} color="#f9f3e7" />
       </ShapeMesh>
       <mesh castShadow receiveShadow>
         <extrudeGeometry

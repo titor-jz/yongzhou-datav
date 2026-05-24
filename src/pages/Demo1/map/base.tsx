@@ -1,22 +1,17 @@
-import { use, useLayoutEffect, useMemo, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import { useThree } from "@react-three/fiber";
 import { gsap } from "gsap";
 import {
   Box2,
   LineSegments,
   Mesh,
-  RepeatWrapping,
   Vector2,
   type Group,
 } from "three";
 import { geoMercator } from "d3-geo";
 import type { CityGeoJSON } from "@/types/map";
 import City, { type CityProps } from "./city";
-import loadTexture from "../helpers/loadTexture";
 import { useConfigStore } from "../stores";
-
-import yzMapTexture from "@/assets/sc_map.png";
-import yzNormalMap from "@/assets/sc_normal_map.png";
 import Heatmap from "./heatmap";
 
 export interface BaseProps {
@@ -25,21 +20,10 @@ export interface BaseProps {
   outlineData?: CityGeoJSON;
 }
 
-const yzTextures = Promise.all([
-  loadTexture(yzMapTexture, (tex) => {
-    tex.wrapS = tex.wrapT = RepeatWrapping;
-  }),
-  loadTexture(yzNormalMap, (tex) => {
-    tex.wrapS = tex.wrapT = RepeatWrapping;
-  }),
-]);
-
 export default function Base(props: BaseProps) {
   const { data, depth = 6 } = props;
   const groupRef = useRef<Group>(null!);
   const camera = useThree((state) => state.camera);
-
-  const [texture1, texture2] = use(yzTextures);
 
   const projection = useMemo(() => {
     return geoMercator()
@@ -94,9 +78,9 @@ export default function Base(props: BaseProps) {
     });
 
     tl.to(camera.position, {
-      x: 40,
-      y: 40,
-      z: 35,
+      x: 0,
+      y: 80,
+      z: 80,
       duration: 2,
       ease: "circ.out",
     });
@@ -128,8 +112,6 @@ export default function Base(props: BaseProps) {
           depth={depth}
           bbox={bbox}
           data={region}
-          map={texture1}
-          normalMap={texture2}
         />
       ))}
       <Heatmap
