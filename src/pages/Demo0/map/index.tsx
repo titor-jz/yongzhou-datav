@@ -25,7 +25,7 @@ export default function Index() {
     const tween = gsap.fromTo(
       camera.position,
       { x: -50, y: 50, z: 150 },
-      { x: 0, y: 80, z: 100, duration: 1.5, ease: "sine.inOut" }
+      { x: 0, y: 50, z: 60, duration: 1.5, ease: "sine.inOut" }
     );
 
     return () => {
@@ -35,7 +35,7 @@ export default function Index() {
 
   return (
     <Center top>
-      <group rotation={[-Math.PI / 2, 0, 0]} scale={0.8}>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={1.0}>
         <BaseMap projection={projection} />
 
         <OutLine projection={projection} />

@@ -94,9 +94,9 @@ export default function Base(props: BaseProps) {
     });
 
     tl.to(camera.position, {
-      x: 60,
-      y: 125,
-      z: 160,
+      x: 40,
+      y: 80,
+      z: 100,
       duration: 2,
       ease: "circ.out",
     });
