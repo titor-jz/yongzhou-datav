@@ -14,16 +14,16 @@ import type { GeoProjection } from "d3-geo";
 import type { CityGeoJSON } from "@/types/map";
 
 import yongzhouMapData from "@/assets/yongzhou.json";
-import textureMap from "@/assets/sc_map.png";
-import scNormalMap from "@/assets/sc_normal_map.png";
-import scDisplacementMap from "@/assets/sc_displacement_map.png";
+import yzMapTexture from "@/assets/sc_map.png";
+import yzNormalMap from "@/assets/sc_normal_map.png";
+import yzDisplacementMap from "@/assets/sc_displacement_map.png";
 
 const data = yongzhouMapData as CityGeoJSON;
 
 export default function BaseMap({ projection }: { projection: GeoProjection }) {
   const newStyle = useMapStyleStore((s) => s.newStyle);
   const [texture1, texture2, texture3] = useTexture(
-    [textureMap, scNormalMap, scDisplacementMap],
+    [yzMapTexture, yzNormalMap, yzDisplacementMap],
     (tex) =>
       tex.forEach((el) => {
         el.wrapS = el.wrapT = RepeatWrapping;

@@ -42,9 +42,9 @@ export default function Map() {
         <BeamLight />
         <OrbitControls
           enableDamping
-          zoomSpeed={0.3}
-          minDistance={8}
-          maxDistance={20}
+          zoomSpeed={1}
+          minDistance={2}
+          maxDistance={80}
           maxPolarAngle={1.5}
         />
       </Canvas>

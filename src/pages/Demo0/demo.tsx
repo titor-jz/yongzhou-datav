@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { folder, Leva, useControls } from "leva";
 import { AmbientLight, PointLight } from "./map/lights";
 import Panel from "./panel";
-import SCMap from "./map";
+import YongzhouMap from "./map";
 
 const Wrapper = styled.div`
   position: relative;
@@ -60,14 +60,14 @@ export default function Demo() {
             <AmbientLight />
             <PointLight />
             <Stars fade count={1000} factor={8} saturation={0} speed={2} />
-            <SCMap />
+            <YongzhouMap />
             <OrbitControls
               enablePan
               enableZoom
               enableRotate
-              zoomSpeed={0.3}
-              minDistance={10}
-              maxDistance={20}
+              zoomSpeed={1}
+              minDistance={2}
+              maxDistance={120}
               maxPolarAngle={1.5}
             />
           </Canvas>

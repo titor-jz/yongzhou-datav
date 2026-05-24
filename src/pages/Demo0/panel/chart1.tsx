@@ -48,13 +48,13 @@ export default function Chart1() {
         title: [
           {
             left: "center",
-            text: "全省",
+            text: "全市",
             textStyle: { color: "rgba(255, 255, 255, 0.6)" },
           },
           {
             top: "50%",
             left: "center",
-            text: "成都市",
+            text: "冷水滩区",
             textStyle: { color: "rgba(255, 255, 255, 0.6)" },
           },
         ],

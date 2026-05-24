@@ -15,8 +15,8 @@ import City, { type CityProps } from "./city";
 import loadTexture from "../helpers/loadTexture";
 import { useConfigStore } from "../stores";
 
-import map from "@/assets/sc_map.png";
-import normalMap from "@/assets/sc_normal_map.png";
+import yzMapTexture from "@/assets/sc_map.png";
+import yzNormalMap from "@/assets/sc_normal_map.png";
 import Heatmap from "./heatmap";
 
 export interface BaseProps {
@@ -25,11 +25,11 @@ export interface BaseProps {
   outlineData?: CityGeoJSON;
 }
 
-const textures = Promise.all([
-  loadTexture(map, (tex) => {
+const yzTextures = Promise.all([
+  loadTexture(yzMapTexture, (tex) => {
     tex.wrapS = tex.wrapT = RepeatWrapping;
   }),
-  loadTexture(normalMap, (tex) => {
+  loadTexture(yzNormalMap, (tex) => {
     tex.wrapS = tex.wrapT = RepeatWrapping;
   }),
 ]);
@@ -39,12 +39,12 @@ export default function Base(props: BaseProps) {
   const groupRef = useRef<Group>(null!);
   const camera = useThree((state) => state.camera);
 
-  const [texture1, texture2] = use(textures);
+  const [texture1, texture2] = use(yzTextures);
 
   const projection = useMemo(() => {
     return geoMercator()
       .center(data.features[0].properties.centroid)
-      .scale(1000)
+      .scale(5000)
       .translate([0, 0]);
   }, [data]);
 
@@ -95,8 +95,8 @@ export default function Base(props: BaseProps) {
 
     tl.to(camera.position, {
       x: 40,
-      y: 80,
-      z: 100,
+      y: 40,
+      z: 35,
       duration: 2,
       ease: "circ.out",
     });

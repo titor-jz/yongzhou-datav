@@ -1,5 +1,5 @@
 import { useLayoutEffect, useMemo, useRef } from "react";
-import { Center, useTexture } from "@react-three/drei";
+import { useTexture } from "@react-three/drei";
 import {
   Box2,
   DoubleSide,
@@ -24,7 +24,7 @@ import Boundary from "./boundary";
 import Label from "./label";
 import { useConfigStore } from "../stores";
 
-import scNormalMap from "@/assets/sc_normal_map1.png";
+import yzNormalMap from "@/assets/sc_normal_map1.png";
 import Cones from "./cone";
 
 export interface BaseProps {
@@ -141,12 +141,11 @@ export default function Base(props: BaseProps) {
   }, [camera]);
 
   return (
-    <Center top>
-      <group
+    <group
         castShadow
         receiveShadow
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={[0.5, 0.5, 0.5]}
+        scale={[1, 1, 1]}
         position={[0, 0.2, 0]}>
         <group ref={groupRef} scale={[1, 1, 0]} position={[0, 0, -0.01]}>
           {regions.map((region, idx) => (
@@ -168,7 +167,6 @@ export default function Base(props: BaseProps) {
           <Boundary data={boundary} />
         </group>
       </group>
-    </Center>
   );
 }
 
@@ -186,7 +184,7 @@ function City(props: {
   const groupRef = useRef<Group>(null!);
   const vector3 = useRef(new Vector3(1, 1, 1));
 
-  const texture = useTexture(scNormalMap);
+  const texture = useTexture(yzNormalMap);
 
   const [shape, shapeGeometry] = useMemo(() => {
     const shapes = data.points.map((e) => new Shape(e));
