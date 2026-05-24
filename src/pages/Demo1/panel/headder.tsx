@@ -23,7 +23,7 @@ const Title = styled.div`
   text-align: center;
 
   &::after {
-    content: "SICHUAN SMART BRAIN";
+    content: "YONGZHOU SMART BRAIN";
     display: block;
     font-size: 12px;
     letter-spacing: 12px;
@@ -146,7 +146,7 @@ export default function Headder(props: ComponentProps<typeof TitleWrapper>) {
   return (
     <TitleWrapper {...props}>
       <Bg />
-      <Title>四川省智慧城市数据大脑</Title>
+      <Title>永州市智慧城市数据大脑</Title>
       <Github href="https://github.com/knight-L/datav" target="_blank" />
     </TitleWrapper>
   );

@@ -8,9 +8,9 @@ import BaseMap from "./baseMap";
 import OutLine from "./outline";
 import FlyLine from "./flyLine";
 
-import scMapData from "@/assets/sc.json";
+import yongzhouMapData from "@/assets/yongzhou.json";
 
-const data = scMapData as CityGeoJSON;
+const data = yongzhouMapData as CityGeoJSON;
 
 export default function Index() {
   const camera = useThree((state) => state.camera);

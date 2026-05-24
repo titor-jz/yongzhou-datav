@@ -9,7 +9,7 @@ import {
 } from "three";
 import { type GeoProjection } from "d3-geo";
 
-import scOutlineData from "@/assets/sc_outline.json";
+import yongzhouOutlineData from "@/assets/yongzhou_outline.json";
 
 export default function FlyLine({ projection }: { projection: GeoProjection }) {
   const index = useRef(0); //取点索引位置
@@ -28,7 +28,7 @@ export default function FlyLine({ projection }: { projection: GeoProjection }) {
   useEffect(() => {
     let v3Arr: Vector3[] = [];
 
-    scOutlineData.features.map((line) => {
+    yongzhouOutlineData.features.map((line) => {
       line.geometry.coordinates[0].map((coords) => {
         v3Arr = coords.map((ll) => {
           const [x, y] = projection(ll as [number, number])!;

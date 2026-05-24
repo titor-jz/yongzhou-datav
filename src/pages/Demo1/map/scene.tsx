@@ -4,11 +4,11 @@ import Base from "./base";
 import Bottom from "./bottom";
 import type { CityGeoJSON } from "@/types/map";
 
-import scMapData from "@/assets/sc.json";
-import scOutlineData from "@/assets/sc_outline.json";
+import yongzhouMapData from "@/assets/yongzhou.json";
+import yongzhouOutlineData from "@/assets/yongzhou_outline.json";
 
-const mapData = scMapData as CityGeoJSON,
-  outlineData = scOutlineData as CityGeoJSON;
+const mapData = yongzhouMapData as CityGeoJSON,
+  outlineData = yongzhouOutlineData as CityGeoJSON;
 
 export default function Scene() {
   return (

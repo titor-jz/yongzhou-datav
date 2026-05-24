@@ -13,12 +13,12 @@ import ShapeBox from "./shape";
 import type { GeoProjection } from "d3-geo";
 import type { CityGeoJSON } from "@/types/map";
 
-import scMapData from "@/assets/sc.json";
+import yongzhouMapData from "@/assets/yongzhou.json";
 import textureMap from "@/assets/sc_map.png";
 import scNormalMap from "@/assets/sc_normal_map.png";
 import scDisplacementMap from "@/assets/sc_displacement_map.png";
 
-const data = scMapData as CityGeoJSON;
+const data = yongzhouMapData as CityGeoJSON;
 
 export default function BaseMap({ projection }: { projection: GeoProjection }) {
   const newStyle = useMapStyleStore((s) => s.newStyle);
