@@ -32,7 +32,7 @@ const CanvasWrapper = styled.div`
   height: 100%;
 `;
 
-useEnvironment.preload({ files: "/sc-datav/hdr/venice_sunset_1k.hdr" });
+useEnvironment.preload({ files: "/yongzhou-datav/hdr/venice_sunset_1k.hdr" });
 
 export default function Demo2() {
   return (
